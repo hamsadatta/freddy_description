@@ -8,12 +8,9 @@
 
   <license>GPLv3</license>
 
-  <author email="sushant.chavan@smail.inf.h-brs.de">Dharmin B.</author>
+  <author email="dharmingeo@gmail.com">Dharmin B.</author>
   <author email="sushant.chavan@smail.inf.h-brs.de">Sushant Chavan</author>
 
   <buildtool_depend>catkin</buildtool_depend>
-
-  <export>
-  </export>
 
 </package>
