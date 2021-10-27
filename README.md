@@ -1,2 +1,3 @@
-# freddy_description
-URDF and related files for Freddy
+# Freddy Description
+
+Robot description for the freddy robot in form of URDF files, controllers and meshes
