@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <!-- simplified box collision geometry for base -->
+    <xacro:property name="robot_name" value="freddy"/>
     <xacro:property name="base_size_x" value="0.635"/>
     <xacro:property name="base_size_y" value="0.582"/>
     <xacro:property name="base_size_z_bottom" value="0.12"/>
@@ -99,12 +100,12 @@
 
         <!-- HOKUYO LASER -->
         <xacro:hokuyo name="base_laser_front" parent="${name}_link"
-                           topic="base_scan_front" use_gpu="${use_gpu_2d_laser}">
+                           topic="/${robot_name}/base_scan_front" use_gpu="${use_gpu_2d_laser}">
             <origin xyz="0.26 -0.24 0.25" rpy="${pi} 0 ${-pi/4}"/>
         </xacro:hokuyo>
 
         <xacro:hokuyo name="base_laser_back" parent="${name}_link"
-                           topic="base_scan_back" use_gpu="${use_gpu_2d_laser}">
+                           topic="/${robot_name}/base_scan_back" use_gpu="${use_gpu_2d_laser}">
             <origin xyz="-0.26 0.24 0.25" rpy="${pi} 0 ${3*pi/4}"/>
         </xacro:hokuyo>
 
