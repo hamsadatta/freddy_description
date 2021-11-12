@@ -7,5 +7,5 @@ catkin_package(
   CATKIN_DEPENDS
 )
 
-install(DIRECTORY meshes robots
+install(DIRECTORY robots
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
