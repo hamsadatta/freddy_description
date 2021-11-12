@@ -5,7 +5,7 @@
     <xacro:property name="wheel_mass" value="1.0" />
     <xacro:property name="inertia_wheels" value="0.001" />
 
-    <xacro:include filename="$(find freddy_description)/urdf/common.xacro" />
+    <xacro:include filename="$(find freddy_base_description)/urdf/common.xacro" />
 
     <xacro:macro name="kelo_wheel" params="name parent *origin material_name">
         <joint name="${name}_joint" type="fixed">

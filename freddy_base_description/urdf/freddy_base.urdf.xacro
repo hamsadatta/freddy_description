@@ -4,7 +4,6 @@
     <!-- simplified box collision geometry for base -->
     <xacro:property name="robot_name" value="freddy"/>
 
-    <!-- base parameters -->
     <xacro:property name="base_size_x" value="0.635"/>
     <xacro:property name="base_size_y" value="0.582"/>
     <xacro:property name="base_size_z_bottom" value="0.12"/>
@@ -14,14 +13,8 @@
     <xacro:property name="base_size_z" value="${base_size_z_bottom + laser_slit_height + base_size_z_top}"/>
     <xacro:property name="base_mass" value="40.0"/>
 
-    <!-- torso parameters -->
-    <xacro:property name="torso_height" value="0.3"/>
-    <xacro:property name="torso_width" value="0.4"/>
-    <xacro:property name="torso_thickness" value="0.19"/>
-    <xacro:property name="torso_back_offset" value="0.02"/>
-
-    <xacro:include filename="$(find freddy_description)/urdf/sensors/hokuyo.urdf.xacro" />
-    <xacro:include filename="$(find freddy_description)/urdf/kelo_wheel.urdf.xacro" />
+    <xacro:include filename="$(find freddy_base_description)/urdf/sensors/hokuyo.urdf.xacro" />
+    <xacro:include filename="$(find freddy_base_description)/urdf/kelo_wheel.urdf.xacro" />
 
     <xacro:macro name="freddy_base" params="name parent *origin use_gpu_2d_laser:=true">
         <!-- HOLONOMIC DRIVE PLUGIN -->
@@ -35,7 +28,7 @@
             </plugin>
         </gazebo>
 
-        <!-- BODY -->
+        <!-- BASE -->
         <joint name="${name}_joint" type="fixed">
             <xacro:insert_block name="origin" />
             <parent link="${parent}"/>
@@ -64,15 +57,8 @@
                 </geometry>
                 <material name="DarkGrey"/>
             </visual>
-            <visual>
-                <origin xyz="${-base_size_x/2 + torso_back_offset + torso_thickness/2} 0 ${wheel_slit_height + base_size_z + torso_height/2}" rpy="0 0 0"/>
-                <geometry>
-                    <box size="${torso_thickness} ${torso_width} ${torso_height}" />
-                </geometry>
-                <material name="DarkGrey"/>
-            </visual>
 
-            <!-- base collisions -->
+            <!-- base bottom collisions -->
             <collision>
                 <origin xyz="0 0 ${wheel_slit_height + base_size_z_bottom/2}" rpy="0 0 0.0"/>
                 <geometry>
@@ -80,18 +66,11 @@
                 </geometry>
             </collision>
 
+            <!-- base top collisions -->
             <collision>
                 <origin xyz="0 0 ${wheel_slit_height + base_size_z_bottom + laser_slit_height + base_size_z_top/2}" rpy="0 0 0.0"/>
                 <geometry>
                     <box size="${base_size_x} ${base_size_y} ${base_size_z_top}" />
-                </geometry>
-            </collision>
-
-            <!-- torso collision -->
-            <collision>
-                <origin xyz="${-base_size_x/2 + torso_back_offset + torso_thickness/2} 0 ${wheel_slit_height + base_size_z + torso_height/2}" rpy="0 0 0"/>
-                <geometry>
-                    <box size="${torso_thickness} ${torso_width} ${torso_height}" />
                 </geometry>
             </collision>
 
